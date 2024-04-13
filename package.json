@@ -1,0 +1,11 @@
+{
+  "name": "gesture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "MMM-Gesture-Control.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vk",
+  "license": "ISC"
+}
