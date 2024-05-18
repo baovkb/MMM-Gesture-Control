@@ -32,7 +32,10 @@ Module.register("MMM-Gesture-Control", {
 			this.sendSocketNotification("CONFIG",this.config)
 		}
 		if (notification==="DOM_OBJECTS_CREATED") {
-			this.sendSocketNotification("Start");
+			setTimeout(() => {
+				this.sendSocketNotification("Start");
+			}, 3000)
+			
 		} else if (notification === "MMM-Gesture-Control") {
 			if (payload.type === "Restart") {
 				this.sendSocketNotification("Restart");
@@ -42,12 +45,12 @@ Module.register("MMM-Gesture-Control", {
 	},
 
 	socketNotificationReceived: function(notification, payload) {
-		switch(notification) {
+		switch(notification) {		
 			case "Right":
-				this.sendNotification("EXT_PAGES-INCREMENT");
+				this.sendNotification("MMM-Screen-Control", {type: "CHANGE_PAGE", cmd: "EXT_PAGES-INCREMENT"});
 				break;
 			case "Left":
-				this.sendNotification("EXT_PAGES-DECREMENT");
+				this.sendNotification("MMM-Screen-Control", {type: "CHANGE_PAGE", cmd: "EXT_PAGES-DECREMENT"});
 				break;
 			case "Clockwise":
 				this.sendNotification("GA_ACTIVATE");
